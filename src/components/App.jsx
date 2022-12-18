@@ -40,23 +40,25 @@ const App = () => {
     return Number(positivePercentage);
   };
 
+  const total = countTotalFeedback();
+
   return (
     <Container>
       <Section title="Please leave feedback">
         <FeedbackOptions
           options={initialOptions}
           onLeaveFeedback={leaveFeedback}
-        ></FeedbackOptions>
+        />
       </Section>
       <Section title="Statistics">
-        {!countTotalFeedback() ? (
+        {!total ? (
           <Notification message="There is no feedback" />
         ) : (
           <Statistics
             good={good}
             neutral={neutral}
             bad={bad}
-            total={countTotalFeedback()}
+            total={total}
             positivePercentage={countPositiveFeedbackPercentage()}
           />
         )}
